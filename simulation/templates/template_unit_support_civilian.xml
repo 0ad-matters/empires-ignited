@@ -29,9 +29,10 @@
     </Slaughter>
   </Attack>
   <Cost>
-    <BuildTime>8</BuildTime>
+    <BuildTime>10</BuildTime>
     <Resources>
       <food>50</food>
+      <wood>25</wood>
     </Resources>
   </Cost>
   <Health>

@@ -18,6 +18,8 @@ armed citizenry, and fire-and-energy flavour.
 ## The citizenry (support units)
 
 - **Worker base HP raised from 25 to 75** (female citizens / civilians).
+- **Workers cost a bit more** — 50 food + 25 wood (was 50 food) and train
+  slightly slower (10s, was 8s), to match their new durability.
 - **Support Militia** — three upgrades researched at the Civic Centre
   that turn your *workers* (not healers/traders) into an emergency
   militia: each tier is +50% HP, armour, and attack and +15% training
