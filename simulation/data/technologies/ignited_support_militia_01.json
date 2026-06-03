@@ -1,0 +1,24 @@
+{
+	"genericName": "Civic Militia",
+	"description": "Citizens drill with arms so they can defend the home in a crisis.",
+	"cost": { "food": 200, "metal": 100 },
+	"requirements": { "tech": "phase_town" },
+	"requirementsTooltip": "Unlocked in Town Phase.",
+	"icon": "helmet_corinthian_bronze.png",
+	"researchTime": 30,
+	"tooltip": "Support units +50% health, armor, and attack, but +15% training cost.",
+	"modifications": [
+		{ "value": "Health/Max", "multiply": 1.5 },
+		{ "value": "Resistance/Entity/Damage/Hack", "multiply": 1.5 },
+		{ "value": "Resistance/Entity/Damage/Pierce", "multiply": 1.5 },
+		{ "value": "Resistance/Entity/Damage/Crush", "multiply": 1.5 },
+		{ "value": "Attack/Melee/Damage/Hack", "multiply": 1.5 },
+		{ "value": "Attack/Melee/Damage/Pierce", "multiply": 1.5 },
+		{ "value": "Attack/Melee/Damage/Crush", "multiply": 1.5 },
+		{ "value": "Cost/Resources/food", "multiply": 1.15 },
+		{ "value": "Cost/Resources/wood", "multiply": 1.15 },
+		{ "value": "Cost/Resources/stone", "multiply": 1.15 },
+		{ "value": "Cost/Resources/metal", "multiply": 1.15 }
+	],
+	"affects": ["Support"]
+}

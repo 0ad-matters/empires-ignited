@@ -1,0 +1,25 @@
+{
+	"genericName": "Levée en Masse",
+	"description": "The entire populace is mobilized for war. Support units become a true militia.",
+	"cost": { "food": 400, "metal": 300 },
+	"supersedes": "ignited_support_militia_02",
+	"requirements": { "tech": "phase_city" },
+	"requirementsTooltip": "Unlocked in City Phase.",
+	"icon": "helmet_corinthian_gold.png",
+	"researchTime": 60,
+	"tooltip": "Support units +50% health, armor, and attack, but +15% training cost.",
+	"modifications": [
+		{ "value": "Health/Max", "multiply": 1.5 },
+		{ "value": "Resistance/Entity/Damage/Hack", "multiply": 1.5 },
+		{ "value": "Resistance/Entity/Damage/Pierce", "multiply": 1.5 },
+		{ "value": "Resistance/Entity/Damage/Crush", "multiply": 1.5 },
+		{ "value": "Attack/Melee/Damage/Hack", "multiply": 1.5 },
+		{ "value": "Attack/Melee/Damage/Pierce", "multiply": 1.5 },
+		{ "value": "Attack/Melee/Damage/Crush", "multiply": 1.5 },
+		{ "value": "Cost/Resources/food", "multiply": 1.15 },
+		{ "value": "Cost/Resources/wood", "multiply": 1.15 },
+		{ "value": "Cost/Resources/stone", "multiply": 1.15 },
+		{ "value": "Cost/Resources/metal", "multiply": 1.15 }
+	],
+	"affects": ["Support"]
+}

@@ -109,6 +109,9 @@
       roman_roads
       unlock_spies
       spy_counter
+      ignited_support_militia_01
+      ignited_support_militia_02
+      ignited_support_militia_03
     </Technologies>
   </Researcher>
   <Resistance>
