@@ -40,52 +40,52 @@ function PreInitGame()
 				cmpTechnologyManager.ResearchTechnology(tech);
 		}
 
-		// wip: auto-research market trading upgrades + the temple's unit
-		// HP-regen upgrade. Listed in dependency order (trade_gain_01 before
-		// _02); ResearchTechnology applies them unconditionally.
+		// wip: auto-research every upgrade offered by these buildings —
+		// generically, by reading each building's Researcher.Technologies
+		// rather than naming the techs (the deathmatch_gamemode / 10ad
+		// approach). storehouse/farmstead/house are 10ad's; market,
+		// defense tower and temple are wip additions.
+		const wipTemplateManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
 		if (cmpTechnologyManager)
-			for (const tech of [
-				"trader_health",
-				"trade_gain_01",
-				"trade_gain_02",
-				"trade_commercial_treaty",
-				"health_regen_units",
-			])
-				if (TechnologyTemplates.Get(tech))
+			for (const building of ["storehouse", "farmstead", "house", "market", "defense_tower", "temple"])
+			{
+				const tmpl = wipTemplateManager.GetTemplateWithoutValidation("structures/" + civ + "/" + building);
+				if (!tmpl || !tmpl.Researcher || !tmpl.Researcher.Technologies)
+					continue;
+				for (let tech of tmpl.Researcher.Technologies._string.split(" "))
+				{
+					if (tech.endsWith("{civ}"))
+					{
+						tech = tech.replace("{civ}", civ);
+						if (!TechnologyTemplates.Get(tech))
+							tech = tech.replace("_" + civ, "_generic");
+					}
+					const template = TechnologyTemplates.Get(tech);
+					if (!template)
+						continue;
+
+					// Skip techs gated to a different civ (some buildings list
+					// civ-restricted upgrades). Guarded: techs with no
+					// requirements just get researched.
+					const tReq = template.requirements && template.requirements.all;
+					let tAny = [];
+					if (tReq)
+					{
+						if (tReq.some(r => {
+							if (r.any)
+								tAny = r.any;
+							if (r.civ)
+								return r.civ != civ;
+							return r.notciv === civ;
+						}))
+							continue;
+						if (tAny.length && tAny.every(r => r.civ != civ))
+							continue;
+					}
+
 					cmpTechnologyManager.ResearchTechnology(tech);
-
-		// 10ad: auto-research the storehouse/farmstead/house upgrade techs.
-		const structure = ["storehouse", "farmstead", "house"];
-		let research10adTechs = [];
-
-		for (let s = 0; s < structure.length; s++)
-			research10adTechs.push(...cmpTemplateManager.GetTemplateWithoutValidation("structures/" + civ + "/" + structure[s]).Researcher.Technologies._string.split(" "));
-
-		for (let tech of research10adTechs)
-		{
-			const template = TechnologyTemplates.Get(tech);
-
-			// Some civs do not get the same upgrades. Requirements are specified
-			// in the templates
-			let tReq = template.requirements.all;
-			let tAny = [];
-
-			if (tReq) {
-				if (tReq.some(r => {
-					if (r.any)
-						tAny = r.any
-					if (r.civ)
-						return r.civ != civ;
-					return r.notciv === civ;
-				})) continue;
-				if (tAny) {
-					if (tAny.some(r => {
-						return r.civ != civ;
-					})) continue;
 				}
 			}
-			cmpTechnologyManager.ResearchTechnology(tech);
-		}
 	}
 
 	// Explore the map inside the players' territory borders

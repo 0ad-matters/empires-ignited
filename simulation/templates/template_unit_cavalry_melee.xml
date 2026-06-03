@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_cavalry">
+  <Attack>
+    <Melee>
+      <Bonuses>
+        <BonusVsStructure>
+          <Classes>Structure</Classes>
+          <Multiplier>2</Multiplier>
+        </BonusVsStructure>
+      </Bonuses>
+    </Melee>
+  </Attack>
+  <Health>
+    <Max>160</Max>
+  </Health>
+  <Identity>
+    <GenericName>Melee Cavalry</GenericName>
+    <VisibleClasses datatype="tokens">Melee</VisibleClasses>
+  </Identity>
+</Entity>
