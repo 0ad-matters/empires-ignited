@@ -1,0 +1,9 @@
+{
+	"genericName": "Efficient Construction",
+	"description": "Structures are built 10% faster, easing the cost of a pricier army.",
+	"autoResearch": true,
+	"modifications": [
+		{ "value": "Cost/BuildTime", "multiply": 0.9 }
+	],
+	"affects": ["Structure"]
+}
