@@ -11,8 +11,8 @@
       <PrepareTime>400</PrepareTime>
       <RepeatTime>3500</RepeatTime>
       <Projectile>
-        <ActorName>props/wip/stream_maroon_bolt.xml</ActorName>
-        <ImpactActorName>props/wip/stream_maroon_impact.xml</ImpactActorName>
+        <ActorName>props/ignited/stream_maroon_bolt.xml</ActorName>
+        <ImpactActorName>props/ignited/stream_maroon_impact.xml</ImpactActorName>
         <ImpactAnimationLifetime>0.35</ImpactAnimationLifetime>
         <Speed>100</Speed>
         <Spread>1.25</Spread>

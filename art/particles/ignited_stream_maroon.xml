@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<particles>
+	<texture>art/textures/particles/flame_radiant.png</texture>
+	<blend mode="add"/>
+
+	<!-- Lower emission + a soft radial texture so the colour shows
+	     instead of saturating to a white core. Near-zero velocity makes
+	     particles linger where they spawn, trailing the bolt as a stream. -->
+	<constant name="emissionrate" value="120.0"/>
+	<uniform name="lifetime" min="0.3" max="0.55"/>
+
+	<uniform name="angle" min="-0.6" max="0.6"/>
+
+	<uniform name="velocity.x" min="-0.06" max="0.06"/>
+	<uniform name="velocity.y" min="-0.06" max="0.06"/>
+	<uniform name="velocity.z" min="-0.06" max="0.06"/>
+	<uniform name="velocity.angle" min="-0.3" max="0.3"/>
+
+	<uniform name="size" min="0.8" max="1.4"/>
+	<constant name="size.growthRate" value="-1.0"/>
+
+	<!-- Saturated deep red: green/blue near zero so the additive core
+	     saturates to red rather than white. (Additive can't render a true
+	     dark maroon — for that switch blend to "over".) -->
+	<constant name="color.r" value="0.85"/>
+	<constant name="color.g" value="0.0"/>
+	<constant name="color.b" value="0.05"/>
+</particles>

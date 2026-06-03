@@ -2,7 +2,7 @@
 <actor version="1">
 	<group>
 		<variant frequency="100" name="Base">
-			<particles file="wip_stream_maroon_burst.xml"/>
+			<particles file="ignited_stream_maroon_burst.xml"/>
 		</variant>
 	</group>
 	<material>particle_add.xml</material>

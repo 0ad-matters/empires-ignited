@@ -5,7 +5,7 @@
 		<variant frequency="1" name="rock">
 			<mesh>props/siege_artillery/projectile_stone_lrg.dae</mesh>
 			<props>
-				<prop actor="props/wip/energy_aura.xml" attachpoint="root"/>
+				<prop actor="props/ignited/energy_aura.xml" attachpoint="root"/>
 			</props>
 			<textures>
 				<texture file="gaia/stone_temperate_granite.dds" name="baseTex"/>

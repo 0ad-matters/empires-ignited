@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="special/actor">
   <VisualActor>
-    <Actor>particle/wip_burn_smoke_large.xml</Actor>
+    <Actor>particle/ignited_burn_smoke_small.xml</Actor>
     <ActorOnly/>
     <SilhouetteDisplay>false</SilhouetteDisplay>
     <SilhouetteOccluder>false</SilhouetteOccluder>

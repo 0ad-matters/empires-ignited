@@ -5,7 +5,7 @@
 		<variant frequency="100" name="Base">
 			<props>
 				<prop actor="props/units/weapons/blades/jav_blade.xml" attachpoint="blade"/>
-				<prop actor="props/wip/energy_aura.xml" attachpoint="blade"/>
+				<prop actor="props/ignited/energy_aura.xml" attachpoint="blade"/>
 			</props>
 			<textures>
 				<texture file="props/prop_weap.dds" name="baseTex"/>

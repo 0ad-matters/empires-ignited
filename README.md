@@ -1,4 +1,4 @@
-# Bronze and Bolt
+# Empires Ignited
 
 A 0 A.D. (0.28.0) content mod that rebalances **all** civilizations
 uniformly.

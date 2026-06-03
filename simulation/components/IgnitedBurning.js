@@ -9,32 +9,32 @@
  * position — the same approach Health.js uses for SpawnEntityOnDeath, so no
  * per-building actor edits are needed.
  */
-function WipBurning() {}
+function IgnitedBurning() {}
 
-WipBurning.prototype.Schema = "<empty/>";
+IgnitedBurning.prototype.Schema = "<empty/>";
 
-WipBurning.prototype.THRESHOLD = 0.5;
-WipBurning.prototype.MAX_INTENSITY = 3;
+IgnitedBurning.prototype.THRESHOLD = 0.5;
+IgnitedBurning.prototype.MAX_INTENSITY = 3;
 
-WipBurning.prototype.DECAY_PER_SECOND = 1;
+IgnitedBurning.prototype.DECAY_PER_SECOND = 1;
 
-WipBurning.prototype.Init = function()
+IgnitedBurning.prototype.Init = function()
 {
 	this.effectEntities = [];
 	this.intensity = 0; // current number of stacked fire+smoke sets
 	this.decayTimer = undefined;
 };
 
-WipBurning.prototype.StartDecay = function()
+IgnitedBurning.prototype.StartDecay = function()
 {
 	if (this.decayTimer)
 		return;
 	const cmpTimer = Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer);
 	// First tick after 1s, then every 1s.
-	this.decayTimer = cmpTimer.SetInterval(this.entity, IID_WipBurning, "DecayTick", 1000, 1000, null);
+	this.decayTimer = cmpTimer.SetInterval(this.entity, IID_IgnitedBurning, "DecayTick", 1000, 1000, null);
 };
 
-WipBurning.prototype.StopDecay = function()
+IgnitedBurning.prototype.StopDecay = function()
 {
 	if (!this.decayTimer)
 		return;
@@ -43,7 +43,7 @@ WipBurning.prototype.StopDecay = function()
 };
 
 // A burning structure (HP <= 50%) loses DECAY_PER_SECOND HP each second.
-WipBurning.prototype.DecayTick = function()
+IgnitedBurning.prototype.DecayTick = function()
 {
 	const cmpHealth = Engine.QueryInterface(this.entity, IID_Health);
 	if (cmpHealth)
@@ -55,7 +55,7 @@ WipBurning.prototype.DecayTick = function()
  * up to MAX_INTENSITY sets approaching 0%. Each set is one fire + one
  * smoke emitter, so more sets = denser, more dramatic fire/smoke.
  */
-WipBurning.prototype.GetIntensity = function(ratio)
+IgnitedBurning.prototype.GetIntensity = function(ratio)
 {
 	if (ratio <= 0 || ratio > this.THRESHOLD)
 		return 0;
@@ -75,7 +75,7 @@ WipBurning.prototype.GetIntensity = function(ratio)
  * NB: a 0ad particle actor renders only ONE emitter, so fire and smoke
  * must be spawned as two separate entities.
  */
-WipBurning.prototype.GetTier = function()
+IgnitedBurning.prototype.GetTier = function()
 {
 	let height = 8; // default → medium if no footprint
 	const cmpFootprint = Engine.QueryInterface(this.entity, IID_Footprint);
@@ -93,7 +93,7 @@ WipBurning.prototype.GetTier = function()
 	return "med";
 };
 
-WipBurning.prototype.IsBurning = function()
+IgnitedBurning.prototype.IsBurning = function()
 {
 	return this.effectEntities.length > 0;
 };
@@ -102,7 +102,7 @@ WipBurning.prototype.IsBurning = function()
  * (Re)build the effect to `intensity` stacked fire+smoke sets at the
  * structure's position. intensity 0 clears it.
  */
-WipBurning.prototype.SetIntensity = function(intensity)
+IgnitedBurning.prototype.SetIntensity = function(intensity)
 {
 	if (intensity == this.intensity)
 		return;
@@ -132,7 +132,7 @@ WipBurning.prototype.SetIntensity = function(intensity)
 	for (let i = 0; i < intensity; ++i)
 		for (const kind of ["fire", "smoke"])
 		{
-			const ent = Engine.AddLocalEntity("special/wip_burn_" + kind + "_" + tier);
+			const ent = Engine.AddLocalEntity("special/ignited_burn_" + kind + "_" + tier);
 			if (ent == INVALID_ENTITY)
 				continue;
 			Engine.QueryInterface(ent, IID_Position).JumpTo(pos.x, pos.z);
@@ -140,7 +140,7 @@ WipBurning.prototype.SetIntensity = function(intensity)
 		}
 };
 
-WipBurning.prototype.OnHealthChanged = function(msg)
+IgnitedBurning.prototype.OnHealthChanged = function(msg)
 {
 	const cmpHealth = Engine.QueryInterface(this.entity, IID_Health);
 	if (!cmpHealth)
@@ -153,16 +153,16 @@ WipBurning.prototype.OnHealthChanged = function(msg)
 	this.SetIntensity(this.GetIntensity(msg.to / max));
 };
 
-WipBurning.prototype.OnOwnershipChanged = function(msg)
+IgnitedBurning.prototype.OnOwnershipChanged = function(msg)
 {
 	// Entity removed from the world (captured-to-gaia destruction, death).
 	if (msg.to == INVALID_PLAYER)
 		this.SetIntensity(0);
 };
 
-WipBurning.prototype.OnDestroy = function()
+IgnitedBurning.prototype.OnDestroy = function()
 {
 	this.SetIntensity(0);
 };
 
-Engine.RegisterComponentType(IID_WipBurning, "WipBurning", WipBurning);
+Engine.RegisterComponentType(IID_IgnitedBurning, "IgnitedBurning", IgnitedBurning);

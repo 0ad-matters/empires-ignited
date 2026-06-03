@@ -2,8 +2,8 @@
 	"TranslatedKeys": ["Title", "Description"],
 	"Data": {
 		"Title": "Capturable Buildings",
-		"Description": "Allow structures to be captured. Off by default in Bronze and Bolt.",
-		"Scripts": ["scripts/WipBuildingCapture.js"],
+		"Description": "Allow structures to be captured. Off by default in Empires Ignited.",
+		"Scripts": ["scripts/IgnitedBuildingCapture.js"],
 		"Default": false,
 		"DisabledWhenChecked": [],
 		"GUIOrder": 30

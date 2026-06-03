@@ -3,7 +3,7 @@
  * Only called when a new game is started, not when loading a saved game.
  *
  * Merged from the 10ad mod (gather-tech auto-research, pop cap, explore) with
- * the wip mod's single-phase behavior: every player is force-advanced to city
+ * the mod's single-phase behavior: every player is force-advanced to city
  * phase at game start. ResearchTechnology() applies a tech unconditionally
  * (it does not check requirements), so this works regardless of structure
  * counts or the autoResearch flag.
@@ -27,7 +27,7 @@ function PreInitGame()
 		const civ = QueryPlayerIDInterface(i, IID_Identity).GetCiv();
 		let cmpTemplateManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
 
-		// wip: force-advance to TOWN phase only (city phase is earned by
+		// force-advance to TOWN phase only (city phase is earned by
 		// building a barracks, stable, market and defense tower — see the
 		// requirements in phase_city_*.json). ResearchTechnology ignores
 		// requirements. Prefer the civ-specific tech, fall back to generic.
@@ -40,16 +40,16 @@ function PreInitGame()
 				cmpTechnologyManager.ResearchTechnology(tech);
 		}
 
-		// wip: auto-research every upgrade offered by these buildings —
+		// auto-research every upgrade offered by these buildings —
 		// generically, by reading each building's Researcher.Technologies
 		// rather than naming the techs (the deathmatch_gamemode / 10ad
 		// approach). storehouse/farmstead/house are 10ad's; market,
-		// defense tower and temple are wip additions.
-		const wipTemplateManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
+		// defense tower and temple are mod additions.
+		const cmpTemplateManager2 = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
 		if (cmpTechnologyManager)
 			for (const building of ["storehouse", "farmstead", "house", "market", "defense_tower", "temple"])
 			{
-				const tmpl = wipTemplateManager.GetTemplateWithoutValidation("structures/" + civ + "/" + building);
+				const tmpl = cmpTemplateManager2.GetTemplateWithoutValidation("structures/" + civ + "/" + building);
 				if (!tmpl || !tmpl.Researcher || !tmpl.Researcher.Technologies)
 					continue;
 				for (let tech of tmpl.Researcher.Technologies._string.split(" "))
@@ -110,7 +110,7 @@ function InitGame(settings)
 			cmpRangeManager.ExploreMap(i);
 	}
 
-	// wip: structures are NOT capturable unless the "Capturable Buildings"
+	// structures are NOT capturable unless the "Capturable Buildings"
 	// option is selected. When it's off, give every player's structures an
 	// overwhelming capture-point regen so they can never be captured.
 	const captureEnabled = settings.VictoryConditions &&
@@ -121,7 +121,7 @@ function InitGame(settings)
 		const cmpPlayerManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_PlayerManager);
 		const nocap = { "Capturable/RegenRate": [{ "affects": ["Structure"], "multiply": 100000 }] };
 		for (let i = 1; i < settings.PlayerData.length; ++i)
-			cmpModifiersManager.AddModifiers("wip/nocapture", nocap, cmpPlayerManager.GetPlayerByID(i));
+			cmpModifiersManager.AddModifiers("ignited/nocapture", nocap, cmpPlayerManager.GetPlayerByID(i));
 	}
 
 	const cmpAIManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_AIManager);

@@ -5,7 +5,7 @@
 		<variant>
 			<mesh>props/projectile-bolt.dae</mesh>
 			<props>
-				<prop actor="props/wip/energy_aura.xml" attachpoint="root"/>
+				<prop actor="props/ignited/energy_aura.xml" attachpoint="root"/>
 			</props>
 		</variant>
 	</group>

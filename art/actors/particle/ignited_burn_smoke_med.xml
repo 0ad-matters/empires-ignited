@@ -2,7 +2,7 @@
 <actor version="1">
 	<group>
 		<variant name="Base">
-			<particles file="wip_fire_large.xml"/>
+			<particles file="ignited_smoke_med.xml"/>
 		</variant>
 	</group>
 </actor>

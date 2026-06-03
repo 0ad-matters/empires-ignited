@@ -171,5 +171,5 @@
     <SilhouetteOccluder>true</SilhouetteOccluder>
     <VisibleInAtlasOnly>false</VisibleInAtlasOnly>
   </VisualActor>
-  <WipBurning/>
+  <IgnitedBurning/>
 </Entity>

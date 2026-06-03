@@ -5,7 +5,7 @@
 		<variant name="Type-A">
 			<mesh>props/siege_artillery/projectile_bolt_med.dae</mesh>
 			<props>
-				<prop actor="props/wip/energy_aura.xml" attachpoint="root"/>
+				<prop actor="props/ignited/energy_aura.xml" attachpoint="root"/>
 			</props>
 			<textures>
 				<texture file="props/siege_artillery_01.png" name="baseTex"/>

@@ -2,7 +2,7 @@
 <actor version="1">
 	<group>
 		<variant name="Base">
-			<particles file="wip_energy.xml"/>
+			<particles file="ignited_energy.xml"/>
 		</variant>
 	</group>
 </actor>

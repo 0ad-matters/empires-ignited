@@ -10,8 +10,8 @@
 			<PrepareTime>200</PrepareTime>
 			<RepeatTime>3000</RepeatTime>
 			<Projectile>
-				<ActorName>props/wip/energy_bolt.xml</ActorName>
-				<ImpactActorName>props/wip/energy_impact.xml</ImpactActorName>
+				<ActorName>props/ignited/energy_bolt.xml</ActorName>
+				<ImpactActorName>props/ignited/energy_impact.xml</ImpactActorName>
 				<ImpactAnimationLifetime>0.4</ImpactAnimationLifetime>
 				<Speed>120</Speed>
 				<Spread>0.8</Spread>

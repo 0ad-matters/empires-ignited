@@ -1,7 +1,8 @@
 {
-	"name": "bronze-and-bolt",
+	"name": "empires-ignited",
 	"version": "0.0.1",
-	"label": "Bronze and Bolt",
+	"label": "Empires Ignited",
+	"url": "https://github.com/0ad-matters/empires-ignited",
 	"description": "All civs, uniformly rebalanced: regular soldiers raze buildings (2x vs structures), town phase at start, energy ranged weapons, burning buildings, floating healers.",
 	"dependencies": [
 		"0ad=0.28.0"
