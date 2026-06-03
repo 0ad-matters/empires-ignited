@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<variant file="biped/base_healer.xml">
+  <animations>
+    <animation file="biped/citizen/healing_m.dae" name="Heal" id="heal1" speed="100"/>
+    <animation file="biped/citizen/healing_m.dae" name="Heal" id="heal2" speed="100"/>
+    <animation file="biped/citizen/idle_relax_h_m.dae" name="Idle" id="idle1" speed="60"/>
+    <animation file="biped/citizen/idle_relax_h_m.dae" name="Idle" id="idle2" speed="62"/>
+    <animation file="biped/citizen/idle_relax_h_m.dae" name="Idle" id="idle3" speed="64"/>
+    <!-- Float, don't walk: the Walk state uses the idle (standing) pose. -->
+    <animation file="biped/citizen/idle_relax_h_m.dae" name="Walk" id="walk1" speed="60"/>
+    <animation file="biped/citizen/idle_relax_h_m.dae" name="Walk" id="walk2" speed="62"/>
+  </animations>
+</variant>

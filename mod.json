@@ -1,0 +1,10 @@
+{
+	"name": "bronze-and-bolt",
+	"version": "0.0.1",
+	"label": "Bronze and Bolt",
+	"description": "Romans and Greeks with reduced champion/siege/structure stats, single phase, and energy-bolt ranged champions.",
+	"dependencies": [
+		"0ad=0.28.0"
+	],
+	"type": "content"
+}

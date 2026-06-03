@@ -1,0 +1,84 @@
+{
+	"genericName": "WIP Siege Cap",
+	"description": "Caps Siege stats near regular infantry (\u22481.2\u00d7 baseline).",
+	"autoResearch": true,
+	"requirements": {
+		"any": [
+			{
+				"civ": "athen"
+			},
+			{
+				"civ": "mace"
+			},
+			{
+				"civ": "spart"
+			},
+			{
+				"civ": "rome"
+			}
+		]
+	},
+	"icon": "athenian_owl.png",
+	"tooltip": "Siege engines have ~1.2\u00d7 regular soldier stats (HP/armour/damage scaled down).",
+	"modifications": [
+		{
+			"value": "Health/Max",
+			"multiply": 0.15
+		},
+		{
+			"value": "Resistance/Entity/Damage/Hack",
+			"multiply": 0.25
+		},
+		{
+			"value": "Resistance/Entity/Damage/Pierce",
+			"multiply": 0.25
+		},
+		{
+			"value": "Resistance/Entity/Damage/Crush",
+			"multiply": 0.25
+		},
+		{
+			"value": "Attack/Ranged/Damage/Hack",
+			"multiply": 0.04
+		},
+		{
+			"value": "Attack/Ranged/Damage/Pierce",
+			"multiply": 0.04
+		},
+		{
+			"value": "Attack/Ranged/Damage/Crush",
+			"multiply": 0.04
+		},
+		{
+			"value": "Attack/Melee/Damage/Hack",
+			"multiply": 0.04
+		},
+		{
+			"value": "Attack/Melee/Damage/Pierce",
+			"multiply": 0.04
+		},
+		{
+			"value": "Attack/Melee/Damage/Crush",
+			"multiply": 0.04
+		},
+		{
+			"value": "Cost/Resources/food",
+			"multiply": 0.3
+		},
+		{
+			"value": "Cost/Resources/wood",
+			"multiply": 0.3
+		},
+		{
+			"value": "Cost/Resources/stone",
+			"multiply": 0.3
+		},
+		{
+			"value": "Cost/Resources/metal",
+			"multiply": 0.3
+		}
+	],
+	"affects": [
+		"Siege"
+	]
+}
