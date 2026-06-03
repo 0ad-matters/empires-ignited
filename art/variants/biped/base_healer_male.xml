@@ -10,4 +10,7 @@
     <animation file="biped/citizen/idle_relax_h_m.dae" name="Walk" id="walk1" speed="60"/>
     <animation file="biped/citizen/idle_relax_h_m.dae" name="Walk" id="walk2" speed="62"/>
   </animations>
+  <props>
+    <prop actor="particle/ignited_healer_glow.xml" attachpoint="back"/>
+  </props>
 </variant>
