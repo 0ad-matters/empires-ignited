@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <particles>
-	<texture>art/textures/particles/flame_radiant.png</texture>
+	<texture>art/textures/particles/sparks.png</texture>
 	<blend mode="add"/>
 
-	<!-- Short outward splash where the stream lands. -->
+	<!-- Short outward splash where the stream lands. Neutral sparks
+	     texture so the red colour reads (flame_radiant tints orange). -->
 	<constant name="emissionrate" value="90.0"/>
 	<uniform name="lifetime" min="0.15" max="0.35"/>
 

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <particles>
-	<texture>art/textures/particles/flame_radiant.png</texture>
+	<texture>art/textures/particles/sparks.png</texture>
 	<blend mode="add"/>
 
-	<!-- Lower emission + a soft radial texture so the colour shows
-	     instead of saturating to a white core. Near-zero velocity makes
-	     particles linger where they spawn, trailing the bolt as a stream. -->
+	<!-- Neutral sparks texture (not flame_radiant, which is orange-tinted
+	     and overrides the colour). Lower emission keeps the additive core
+	     from washing to white. Near-zero velocity makes particles linger
+	     where they spawn, trailing the bolt as a stream. -->
 	<constant name="emissionrate" value="120.0"/>
 	<uniform name="lifetime" min="0.3" max="0.55"/>
 
