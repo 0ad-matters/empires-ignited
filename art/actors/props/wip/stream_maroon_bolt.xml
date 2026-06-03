@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+	<group>
+		<variant frequency="100" name="Base">
+			<particles file="wip_stream_maroon.xml"/>
+		</variant>
+	</group>
+	<material>particle_add.xml</material>
+</actor>
