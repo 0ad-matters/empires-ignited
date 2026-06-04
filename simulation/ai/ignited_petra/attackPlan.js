@@ -1136,7 +1136,10 @@ AttackPlan.prototype.checkTargetObstruction = function(gameState, target, positi
 		if (!struct.position() || !struct.get("Obstruction") || struct.hasClass("Field"))
 			continue;
 		// we consider that we can reach the target, but nonetheless check that we did not cross any enemy gate
-		if (dist < radius + 10 && !struct.hasClass("Gate"))
+		// Empires Ignited: widened reach tolerance (was +10) so the army prefers routing AROUND a
+		// wall — the pathfinder already routes units around it — rather than retargeting and wasting
+		// time destroying an easily-bypassed wall. Only genuinely-enclosing walls still get attacked.
+		if (dist < radius + 30 && !struct.hasClass("Gate"))
 			continue;
 		// Check that we are really blocked by this structure, i.e. advancing by 1+0.8(clearance)m
 		// in the target direction would bring us inside its obstruction.
