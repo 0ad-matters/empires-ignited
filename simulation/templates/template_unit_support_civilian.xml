@@ -41,7 +41,6 @@
     <MilitiaChampion>
       <Entity>units/ignited_militia_champion</Entity>
       <Tooltip>Permanently arm this citizen as a champion-grade Militia Champion. It can no longer gather, and the change cannot be undone.</Tooltip>
-      <Icon>units/rome/champion_infantry.png</Icon>
       <Cost>
         <food>80</food>
         <wood>60</wood>
