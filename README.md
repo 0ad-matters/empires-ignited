@@ -53,3 +53,11 @@ armed citizenry, and fire-and-energy flavour.
   and even stock counters like `×2 vs Cavalry` that 0 A.D. normally
   hides), and the in-game selection panel reflects your researched
   upgrades.
+
+## AI
+
+Ships a custom AI — **"Empires Ignited AI"** (a fork of Petra),
+selectable in the match setup — adapted to the mod's rules: it reaches
+the building-gated City Phase, prefers routing *around* bypassable walls
+instead of wasting time destroying them, and arms surplus food-gathering
+workers into Militia Champions.
