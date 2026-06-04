@@ -17,14 +17,14 @@ armed citizenry, and fire-and-energy flavour.
 
 ## The citizenry (support units)
 
-- **Worker base HP raised from 25 to 75** (female citizens / civilians).
-- **Workers cost a bit more** — 50 food + 25 wood (was 50 food) and train
-  slightly slower (10s, was 8s), to match their new durability.
-- **Support Militia** — three upgrades researched at the Civic Centre
-  that turn your *workers* (not healers/traders) into an emergency
-  militia: each tier is +50% HP, armour, and attack and +15% training
-  cost, compounding to roughly ×3.4 stats / ×1.5 cost when fully
-  researched.
+- **Workers morph into Militia Champions.** In **City Phase**, any worker
+  (female citizen / civilian) can be permanently *armed* — it transforms
+  into a **Militia Champion**, a champion-grade infantryman that can no
+  longer gather. The change is one-way (no reverting).
+- **MegaGlest-style morph discount.** The morph costs ~43 food / 60 wood /
+  80 metal — i.e. a champion's cost minus ~75% of the worker's own cost,
+  so worker + morph totals about the same as training a champion fresh
+  (the discount stops you double-paying; it isn't a saving).
 
 ## Buildings
 

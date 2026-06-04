@@ -29,15 +29,30 @@
     </Slaughter>
   </Attack>
   <Cost>
-    <BuildTime>10</BuildTime>
+    <BuildTime>8</BuildTime>
     <Resources>
       <food>50</food>
-      <wood>25</wood>
     </Resources>
   </Cost>
   <Health>
-    <Max>75</Max>
+    <Max>25</Max>
   </Health>
+  <Upgrade>
+    <MilitiaChampion>
+      <Entity>units/ignited_militia_champion</Entity>
+      <Tooltip>Permanently arm this citizen as a champion-grade Militia Champion. It can no longer gather, and the change cannot be undone.</Tooltip>
+      <Icon>units/rome/champion_infantry.png</Icon>
+      <Cost>
+        <food>43</food>
+        <wood>60</wood>
+        <metal>80</metal>
+      </Cost>
+      <Time>10</Time>
+      <Requirements>
+        <Techs datatype="tokens">phase_city</Techs>
+      </Requirements>
+    </MilitiaChampion>
+  </Upgrade>
   <Identity>
     <GenericName>Civilian</GenericName>
     <Phenotype datatype="tokens">
