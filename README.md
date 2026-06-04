@@ -36,7 +36,6 @@ armed citizenry, and fire-and-energy flavour.
 - **Start in Town Phase** automatically. **City Phase is earned** — it
   requires a barracks, stable, market and defense tower (at stock cost
   and time), not auto-researched.
-- **Stables require a forge** (blacksmith).
 - **Defense towers can be built twice as close together.**
 - **Market, temple and defense-tower upgrades auto-research** at game
   start — except **Murder Holes** (which removes a tower's minimum range),
