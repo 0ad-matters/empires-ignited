@@ -2256,14 +2256,15 @@ Headquarters.prototype.tryMorphMilitia = function(gameState)
 		if (ent.getMetadata(PlayerID, "gather-type") == "food" && ent.get("Upgrade"))
 			foodGatherers.push(ent);
 
-	const keep = 15;                  // keep this many on food
+	const keep = 20;                  // keep this many on food (worker/builder core)
 	if (foodGatherers.length <= keep)
 		return;
 
 	// Don't morph more than we can pay for (43 food / 60 wood / 80 metal each).
+	// Small batches so we don't gut the labour pool and leave foundations unbuilt.
 	const res = gameState.getResources();
 	const affordable = Math.floor(Math.min(res.food / 43, res.wood / 60, res.metal / 80));
-	const toMorph = Math.min(10, foodGatherers.length - keep, affordable);
+	const toMorph = Math.min(5, foodGatherers.length - keep, affordable);
 	for (let i = 0; i < toMorph; ++i)
 		Engine.PostCommand(PlayerID, { "type": "upgrade", "entities": [foodGatherers[i].id()], "template": morphTemplate });
 };
@@ -2349,7 +2350,7 @@ Headquarters.prototype.update = function(gameState, queues, events)
 	}
 
 	// Empires Ignited: convert surplus food-gatherers into Militia Champions (City Phase).
-	if (this.currentPhase >= 3 && gameState.ai.playedTurn % 10 == 5)
+	if (this.currentPhase >= 3 && gameState.ai.playedTurn % 15 == 5)
 		this.tryMorphMilitia(gameState);
 
 	this.tradeManager.update(gameState, events, queues);
