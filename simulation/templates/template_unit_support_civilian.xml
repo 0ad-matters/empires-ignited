@@ -43,7 +43,7 @@
       <Tooltip>Permanently arm this citizen as a champion-grade Militia Champion. It can no longer gather, and the change cannot be undone.</Tooltip>
       <Icon>units/rome/champion_infantry.png</Icon>
       <Cost>
-        <food>43</food>
+        <food>80</food>
         <wood>60</wood>
         <metal>80</metal>
       </Cost>

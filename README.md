@@ -21,10 +21,10 @@ armed citizenry, and fire-and-energy flavour.
   (female citizen / civilian) can be permanently *armed* — it transforms
   into a **Militia Champion**, a champion-grade infantryman that can no
   longer gather. The change is one-way (no reverting).
-- **MegaGlest-style morph discount.** The morph costs ~43 food / 60 wood /
-  80 metal — i.e. a champion's cost minus ~75% of the worker's own cost,
-  so worker + morph totals about the same as training a champion fresh
-  (the discount stops you double-paying; it isn't a saving).
+- **Morphing costs a full champion.** The morph price (80 food / 60 wood /
+  80 metal) matches what a champion costs to train — the worker you spend is
+  a premium on top, so arming the citizenry is a deliberate investment, not
+  a cheap shortcut to champions.
 
 ## Buildings
 
