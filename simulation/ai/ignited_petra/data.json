@@ -1,0 +1,7 @@
+{
+  "name": "Empires Ignited AI",
+  "description": "Petra, copied for the Empires Ignited mod so it can be adapted to the mod's rules (town-phase start, worker morphs, cheap anti-building units). Currently identical to Petra.",
+  "constructor": "PetraBot",
+  "filename": "_petrabot.js",
+  "useShared": true
+}
