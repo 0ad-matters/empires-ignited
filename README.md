@@ -6,12 +6,15 @@ armed citizenry, and fire-and-energy flavour.
 
 ## Combat & units
 
-- **Cheap units raze buildings.** Citizen infantry and cavalry deal **×3**
-  damage to structures. Champions and siege are left at stock, so they
-  are *not* specially good at razing — massed cheap soldiers are.
+- **Cheap units raze buildings.** Citizen infantry and cavalry deal **×6**
+  damage to structures — buildings carry heavy hack/pierce armour, so this
+  bonus is what lets massed cheap soldiers tear them down.
 - **Razing scales with the forge.** The anti-structure bonus rises to
-  **×4** after the first melee/ranged attack upgrade and **×5** after the
+  **×7** after the first melee/ranged attack upgrade and **×8** after the
   second (tracked separately for the melee and ranged lines).
+- **Rams crush units too.** Battering rams are no longer restricted to
+  structures — they'll flatten mobile units in the way, though they still
+  prefer buildings.
 - **Citizen-soldiers cost +50%** to train (champions and support units
   excluded).
 
@@ -20,7 +23,8 @@ armed citizenry, and fire-and-energy flavour.
 - **Workers morph into Militia Champions.** In **City Phase**, any worker
   (female citizen / civilian) can be permanently *armed* — it transforms
   into a **Militia Champion**, a champion-grade infantryman that can no
-  longer gather. The change is one-way (no reverting).
+  longer gather and arrives battle-ready (aggressive stance). The morph
+  takes 16 seconds and is one-way (no reverting).
 - **Morphing costs a full champion.** The morph price (80 food / 60 wood /
   80 metal) matches what a champion costs to train — the worker you spend is
   a premium on top, so arming the citizenry is a deliberate investment, not
@@ -38,7 +42,7 @@ armed citizenry, and fire-and-energy flavour.
   start — except **Murder Holes** (which removes a tower's minimum range),
   which you research manually.
 - **Burning buildings.** At 50% HP or below, structures catch fire and
-  smoke (intensity scales with how low the HP is) and lose 1 HP per
+  smoke (intensity scales with how low the HP is) and lose 3 HP per
   second until repaired or destroyed.
 - **Not capturable by default** — a "Capturable Buildings" match-setup
   option re-enables capture.
@@ -50,7 +54,7 @@ armed citizenry, and fire-and-energy flavour.
   units keep their normal arrows and javelins.
 - **Healers float** instead of walking, with a soft conical glow above
   them.
-- **Attack bonuses are shown** in unit tooltips (e.g. `×3 vs Structure`,
+- **Attack bonuses are shown** in unit tooltips (e.g. `×6 vs Structure`,
   and even stock counters like `×2 vs Cavalry` that 0 A.D. normally
   hides), and the in-game selection panel reflects your researched
   upgrades.
