@@ -16,7 +16,7 @@ IgnitedBurning.prototype.Schema = "<empty/>";
 IgnitedBurning.prototype.THRESHOLD = 0.5;
 IgnitedBurning.prototype.MAX_INTENSITY = 3;
 
-IgnitedBurning.prototype.DECAY_PER_SECOND = 1;
+IgnitedBurning.prototype.DECAY_PER_SECOND = 3;
 
 IgnitedBurning.prototype.Init = function()
 {
