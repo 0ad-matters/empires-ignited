@@ -15,8 +15,8 @@ armed citizenry, and fire-and-energy flavour.
 - **Rams crush units too.** Battering rams are no longer restricted to
   structures — they'll flatten mobile units in the way, though they still
   prefer buildings.
-- **Citizen-soldiers cost +50%** to train (champions and support units
-  excluded).
+- **Citizen-soldiers take 20% longer to train** (champions and support
+  units excluded).
 
 ## The citizenry (support units)
 
@@ -32,7 +32,7 @@ armed citizenry, and fire-and-energy flavour.
 
 ## Buildings
 
-- **Structures build ~10% faster** (offsetting the pricier army).
+- **Structures build ~10% faster** (offsetting the slower-mustered army).
 - **Start in Town Phase** automatically. **City Phase is earned** — it
   requires a barracks, stable, market and defense tower (at stock cost
   and time), not auto-researched.
