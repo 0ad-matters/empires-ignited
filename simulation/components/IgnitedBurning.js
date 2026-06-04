@@ -99,37 +99,28 @@ IgnitedBurning.prototype.IsBurning = function()
 };
 
 /**
- * (Re)build the effect to `intensity` stacked fire+smoke sets at the
- * structure's position. intensity 0 clears it.
+ * Spawn the local (visual-only) fire+smoke entities for the current
+ * `this.intensity` at the structure's position, after clearing any existing
+ * ones. These are LOCAL entities — never put their ids in serialized state
+ * (see Serialize below).
  */
-IgnitedBurning.prototype.SetIntensity = function(intensity)
+IgnitedBurning.prototype.BuildEffect = function()
 {
-	if (intensity == this.intensity)
-		return;
-
 	for (const ent of this.effectEntities)
 		Engine.DestroyEntity(ent);
 	this.effectEntities = [];
-	this.intensity = intensity;
 
-	if (intensity <= 0)
-	{
-		this.StopDecay();
+	if (this.intensity <= 0)
 		return;
-	}
 
 	const cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
 	if (!cmpPosition || !cmpPosition.IsInWorld())
-	{
-		this.intensity = 0;
-		this.StopDecay();
 		return;
-	}
-	this.StartDecay();
+
 	const pos = cmpPosition.GetPosition();
 	const tier = this.GetTier();
 
-	for (let i = 0; i < intensity; ++i)
+	for (let i = 0; i < this.intensity; ++i)
 		for (const kind of ["fire", "smoke"])
 		{
 			const ent = Engine.AddLocalEntity("special/ignited_burn_" + kind + "_" + tier);
@@ -138,6 +129,32 @@ IgnitedBurning.prototype.SetIntensity = function(intensity)
 			Engine.QueryInterface(ent, IID_Position).JumpTo(pos.x, pos.z);
 			this.effectEntities.push(ent);
 		}
+};
+
+/**
+ * (Re)build the effect to `intensity` stacked fire+smoke sets at the
+ * structure's position. intensity 0 clears it.
+ */
+IgnitedBurning.prototype.SetIntensity = function(intensity)
+{
+	if (intensity == this.intensity)
+		return;
+
+	// Can't place the effect when not in the world → treat as no fire.
+	if (intensity > 0)
+	{
+		const cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
+		if (!cmpPosition || !cmpPosition.IsInWorld())
+			intensity = 0;
+	}
+
+	this.intensity = intensity;
+	this.BuildEffect();
+
+	if (intensity > 0)
+		this.StartDecay();
+	else
+		this.StopDecay();
 };
 
 IgnitedBurning.prototype.OnHealthChanged = function(msg)
@@ -163,6 +180,27 @@ IgnitedBurning.prototype.OnOwnershipChanged = function(msg)
 IgnitedBurning.prototype.OnDestroy = function()
 {
 	this.SetIntensity(0);
+};
+
+/**
+ * effectEntities holds LOCAL (visual-only) entity ids from AddLocalEntity.
+ * Local entities are not network-synchronised, so their ids differ between
+ * clients — hashing them (the default serialization would) desyncs the
+ * simulation and causes an OOS as soon as any structure is on fire in MP.
+ * Persist only the deterministic state (intensity, the decay timer id) and
+ * rebuild the visuals locally on deserialize.
+ */
+IgnitedBurning.prototype.Serialize = function()
+{
+	return { "intensity": this.intensity, "decayTimer": this.decayTimer };
+};
+
+IgnitedBurning.prototype.Deserialize = function(data)
+{
+	this.intensity = data.intensity;
+	this.decayTimer = data.decayTimer;
+	this.effectEntities = [];
+	this.BuildEffect();
 };
 
 Engine.RegisterComponentType(IID_IgnitedBurning, "IgnitedBurning", IgnitedBurning);
