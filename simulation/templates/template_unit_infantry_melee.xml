@@ -5,7 +5,7 @@
       <Bonuses>
         <BonusVsStructure>
           <Classes>Structure</Classes>
-          <Multiplier>3</Multiplier>
+          <Multiplier>6</Multiplier>
         </BonusVsStructure>
       </Bonuses>
     </Melee>
