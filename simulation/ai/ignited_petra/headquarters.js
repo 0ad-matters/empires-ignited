@@ -2236,6 +2236,38 @@ Headquarters.prototype.baseAtIndex = function(territoryIndex)
  * Some functions are run every turn
  * Others once in a while
  */
+/**
+ * Empires Ignited: when the food workforce is strong, convert a batch of food-gathering
+ * support workers into Militia Champions (the mod's worker->champion morph). Triggered off
+ * the number of workers currently gathering food: keep a solid core, morph the surplus.
+ * Only the support workers carry the morph Upgrade, and the upgrade command itself re-checks
+ * the City-Phase requirement, cost, and CanUpgradeTo — so ineligible morphs are skipped.
+ * Self-throttling: morphed units leave the food-gatherer pool, dropping the count until the
+ * economy rebuilds.
+ */
+Headquarters.prototype.tryMorphMilitia = function(gameState)
+{
+	if (this.currentPhase < 3)
+		return;
+
+	const morphTemplate = "units/ignited_militia_champion";
+	const foodGatherers = [];
+	for (const ent of gameState.getOwnEntitiesByClass("Worker", true).values())
+		if (ent.getMetadata(PlayerID, "gather-type") == "food" && ent.get("Upgrade"))
+			foodGatherers.push(ent);
+
+	const keep = 15;                  // keep this many on food
+	if (foodGatherers.length <= keep)
+		return;
+
+	// Don't morph more than we can pay for (43 food / 60 wood / 80 metal each).
+	const res = gameState.getResources();
+	const affordable = Math.floor(Math.min(res.food / 43, res.wood / 60, res.metal / 80));
+	const toMorph = Math.min(10, foodGatherers.length - keep, affordable);
+	for (let i = 0; i < toMorph; ++i)
+		Engine.PostCommand(PlayerID, { "type": "upgrade", "entities": [foodGatherers[i].id()], "template": morphTemplate });
+};
+
 Headquarters.prototype.update = function(gameState, queues, events)
 {
 	Engine.ProfileStart("Headquarters update");
@@ -2315,6 +2347,10 @@ Headquarters.prototype.update = function(gameState, queues, events)
 		    gameState.getPopulation() > 0.9 * gameState.getPopulationMax())
 			this.buildWonder(gameState, queues, false);
 	}
+
+	// Empires Ignited: convert surplus food-gatherers into Militia Champions (City Phase).
+	if (this.currentPhase >= 3 && gameState.ai.playedTurn % 10 == 5)
+		this.tryMorphMilitia(gameState);
 
 	this.tradeManager.update(gameState, events, queues);
 
