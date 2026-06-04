@@ -35,7 +35,8 @@ armed citizenry, and fire-and-energy flavour.
 - **Stables require a forge** (blacksmith).
 - **Defense towers can be built twice as close together.**
 - **Market, temple and defense-tower upgrades auto-research** at game
-  start.
+  start — except **Murder Holes** (which removes a tower's minimum range),
+  which you research manually.
 - **Burning buildings.** At 50% HP or below, structures catch fire and
   smoke (intensity scales with how low the HP is) and lose 1 HP per
   second until repaired or destroyed.

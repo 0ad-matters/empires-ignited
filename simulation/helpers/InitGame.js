@@ -54,6 +54,11 @@ function PreInitGame()
 					continue;
 				for (let tech of tmpl.Researcher.Technologies._string.split(" "))
 				{
+					// Empires Ignited: leave Murder Holes (removes the tower
+					// minimum range) as a player-researched upgrade rather than
+					// auto-applying it.
+					if (tech == "tower_murderholes")
+						continue;
 					if (tech.endsWith("{civ}"))
 					{
 						tech = tech.replace("{civ}", civ);
