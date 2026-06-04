@@ -39,7 +39,7 @@
         <wood>60</wood>
         <metal>80</metal>
       </Cost>
-      <Time>10</Time>
+      <Time>16</Time>
       <Requirements>
         <Techs datatype="tokens">phase_city</Techs>
       </Requirements>
