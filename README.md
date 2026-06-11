@@ -51,6 +51,11 @@ armed citizenry, and fire-and-energy flavour.
   can't be built (markets remain, for the City Phase requirement and
   barter). An "Allow Trading" match-setup option re-enables them.
 
+## Resources
+
+- **More to gather.** Metal and stone mines hold ~30% more. Random maps
+  (the mainland-style ones) also generate ~30% more trees.
+
 ## Visuals & UI
 
 - **Distinct ranged projectiles** — champion ranged units fire cyan
