@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="template_unit_champion_infantry_swordsman">
+<!--
+  The worker-morph unit. Internally still "ignited_militia_champion" (the
+  filename + the upgrade refs in the worker templates + ignited_petra all point
+  here), but it is now a regular citizen-soldier Pikeman, not a champion. Being
+  a citizen-soldier it CAN gather, which is why the old morph->gather crash no
+  longer applies.
+-->
+<Entity parent="template_unit_infantry_melee_pikeman">
   <IgnitedMorphStance/>
   <Identity>
-    <GenericName>Militia Champion</GenericName>
-    <SpecificName>Militia Champion</SpecificName>
-    <Tooltip>A citizen armed for war — a champion-grade fighter. Cannot gather resources, and the transformation is permanent.</Tooltip>
-    <Icon>units/rome/champion_infantry.png</Icon>
+    <GenericName>Militia Pikeman</GenericName>
+    <SpecificName>Militia Pikeman</SpecificName>
+    <Tooltip>A citizen armed for war as a pikeman (anti-cavalry). The transformation is permanent.</Tooltip>
+    <Icon>units/mace/infantry_pikeman.png</Icon>
   </Identity>
+  <Promotion disable=""/>
   <VisualActor>
-    <Actor>units/romans/infantry_swordsman_c.xml</Actor>
+    <Actor>units/macedonians/infantry_pikeman_b.xml</Actor>
   </VisualActor>
 </Entity>

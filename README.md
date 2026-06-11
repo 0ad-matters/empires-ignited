@@ -20,15 +20,13 @@ armed citizenry, and fire-and-energy flavour.
 
 ## The citizenry (support units)
 
-- **Workers morph into Militia Champions.** In **City Phase**, any worker
-  (female citizen / civilian) can be permanently *armed* — it transforms
-  into a **Militia Champion**, a champion-grade infantryman that can no
-  longer gather and arrives battle-ready (aggressive stance). The morph
-  takes 16 seconds and is one-way (no reverting).
-- **Morphing costs a full champion.** The morph price (80 food / 60 wood /
-  80 metal) matches what a champion costs to train — the worker you spend is
-  a premium on top, so arming the citizenry is a deliberate investment, not
-  a cheap shortcut to champions.
+- **Workers morph into Militia Pikemen.** In **City Phase**, any worker
+  (female citizen / civilian) can be *armed* — it transforms into a
+  **Militia Pikeman**, an anti-cavalry citizen-soldier that arrives
+  battle-ready (aggressive stance). The morph takes 16 seconds and is one-way.
+- **It costs what a pikeman costs.** The morph price (50 food / 50 wood)
+  matches a regular pikeman's train cost; the worker you spend is on top,
+  so arming the citizenry is a real investment.
 
 ## Buildings
 
@@ -74,4 +72,4 @@ Ships a custom AI — **"Empires Ignited AI"** (a fork of Petra),
 selectable in the match setup — adapted to the mod's rules: it reaches
 the building-gated City Phase, prefers routing *around* bypassable walls
 instead of wasting time destroying them, and arms surplus food-gathering
-workers into Militia Champions.
+workers into Militia Pikemen.

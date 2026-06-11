@@ -2260,10 +2260,10 @@ Headquarters.prototype.tryMorphMilitia = function(gameState)
 	if (foodGatherers.length <= keep)
 		return;
 
-	// Don't morph more than we can pay for (43 food / 60 wood / 80 metal each).
+	// Don't morph more than we can pay for (50 food / 50 wood each).
 	// Small batches so we don't gut the labour pool and leave foundations unbuilt.
 	const res = gameState.getResources();
-	const affordable = Math.floor(Math.min(res.food / 43, res.wood / 60, res.metal / 80));
+	const affordable = Math.floor(Math.min(res.food / 50, res.wood / 50));
 	const toMorph = Math.min(5, foodGatherers.length - keep, affordable);
 	for (let i = 0; i < toMorph; ++i)
 		Engine.PostCommand(PlayerID, { "type": "upgrade", "entities": [foodGatherers[i].id()], "template": morphTemplate });

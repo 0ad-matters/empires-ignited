@@ -1,31 +1,21 @@
 /**
- * Fixes up a freshly-morphed Militia Champion, one turn after the morph:
+ * Fixes up a freshly-morphed Militia Pikeman, one turn after the morph:
  *   1. arms it (passive worker stance -> aggressive), and
- *   2. drops the worker's inherited orders if they include a Gather/Return.
+ *   2. drops any gather/return order inherited from the worker, so it stops
+ *      gathering and is ready to fight instead of carrying on as a labourer.
  *
- * The worker->Militia Champion morph goes through Transform.js, which both
- * copies the SOURCE unit's stance (Transform.js: `SwitchToStance(...)`) and its
- * whole order queue (`AddOrders(GetOrders())`) onto the new entity. Workers are
- * `passive` (template_unit_support) and often gathering, and a Militia Champion
- * has no ResourceGatherer — an inherited Gather order then walks it to a
- * resource and crashes UnitAI's FINDINGNEWTARGET, which dereferences the absent
- * ResourceGatherer (UnitAI.js: the GATHERING state is null-guarded, that state
- * is not).
+ * The morph (Transform.js) copies the SOURCE worker's stance and whole order
+ * queue (`AddOrders(GetOrders())`) onto the new unit. Workers are `passive` and
+ * often gathering, so without this the armed pikeman would come out passive and
+ * just keep gathering. The Militia Pikeman is a citizen-soldier (it CAN gather),
+ * so an inherited gather order is harmless — this is purely behavioural. (The old
+ * champion-grade morph had no ResourceGatherer, which is what used to crash
+ * UnitAI's unguarded FINDINGNEWTARGET deref; the pikeman doesn't, so that's moot.)
  *
- * Both fixes run from a 0-delay timer (next turn). OnOwnershipChanged from
- * INVALID_PLAYER fires once when the entity is first owned (creation/morph) and
- * NOT on save-load, so it's the trigger. The deferral is required: the order
- * queue is copied AFTER ownership is set, and clearing it must happen in a clean
- * context, not re-entrantly inside the FSM transition the order copy drives.
- *
- * This handles the common case — the champion stops (instead of walking off to a
- * resource it can't gather) and arms up; even a champion that does hit the crash
- * recovers here the next turn. It does NOT fully prevent the crash: a unit
- * morphed while actively gathering can reach FINDINGNEWTARGET synchronously,
- * before this timer runs. That last ~1% is a stock 0 A.D. bug (UnitAI's
- * FINDINGNEWTARGET derefs ResourceGatherer without the null-guard its sibling
- * GATHERING state has) and is non-fatal (a logged error, deterministic, no OOS);
- * a clean fix would be a one-line guard upstream in UnitAI.js.
+ * Runs from a 0-delay timer (next turn): the order queue is copied AFTER
+ * ownership is set, so clearing it must happen in a clean context, not
+ * re-entrantly inside the FSM transition the order copy drives. OnOwnershipChanged
+ * from INVALID_PLAYER fires once at creation/morph and NOT on save-load.
  */
 function IgnitedMorphStance() {}
 
@@ -47,9 +37,9 @@ IgnitedMorphStance.prototype.MorphFixup = function()
 	if (!cmpUnitAI)
 		return;
 
-	// Clear inherited orders if any is a gather/return (this champion can't
-	// gather; the order would crash UnitAI's FINDINGNEWTARGET). Stop() empties
-	// the queue and idles the unit.
+	// Drop any inherited gather/return order so the armed pikeman stops
+	// labouring and idles ready to fight. Stop() empties the queue and idles
+	// the unit. (Harmless either way now that it's a citizen-soldier.)
 	const orders = cmpUnitAI.GetOrders();
 	if (orders.some(order => order.type == "Gather" || order.type == "ReturnResource"))
 		cmpUnitAI.Stop(false);
