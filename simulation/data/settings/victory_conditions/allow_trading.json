@@ -1,0 +1,11 @@
+{
+	"TranslatedKeys": ["Title", "Description"],
+	"Data": {
+		"Title": "Allow Trading",
+		"Description": "Allow trade routes — building merchant ships and trade caravans. Markets (and barter) are unaffected. Off by default in Empires Ignited.",
+		"Scripts": ["scripts/IgnitedAllowTrading.js"],
+		"Default": false,
+		"DisabledWhenChecked": [],
+		"GUIOrder": 31
+	}
+}

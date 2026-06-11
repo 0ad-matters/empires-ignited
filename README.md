@@ -45,6 +45,9 @@ armed citizenry, and fire-and-energy flavour.
   second until repaired or destroyed.
 - **Not capturable by default** — a "Capturable Buildings" match-setup
   option re-enables capture.
+- **No trade routes by default** — merchant ships and trade caravans
+  can't be built (markets remain, for the City Phase requirement and
+  barter). An "Allow Trading" match-setup option re-enables them.
 
 ## Visuals & UI
 

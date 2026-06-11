@@ -129,6 +129,26 @@ function InitGame(settings)
 			cmpModifiersManager.AddModifiers("ignited/nocapture", nocap, cmpPlayerManager.GetPlayerByID(i));
 	}
 
+	// Trading is off unless the "Allow Trading" option is selected. When off,
+	// disable the trade units — merchant ships and land traders (caravans) — so
+	// there are no trade routes. The market itself stays buildable (it's a City
+	// Phase requirement and still allows barter).
+	const tradingEnabled = settings.VictoryConditions &&
+		settings.VictoryConditions.indexOf("allow_trading") !== -1;
+	if (!tradingEnabled)
+	{
+		for (let i = 1; i < settings.PlayerData.length; ++i)
+		{
+			const cmpPlayer = QueryPlayerIDInterface(i);
+			const cmpIdentity = QueryPlayerIDInterface(i, IID_Identity);
+			if (!cmpPlayer || !cmpIdentity)
+				continue;
+			const civ = cmpIdentity.GetCiv();
+			cmpPlayer.AddDisabledTemplate("units/" + civ + "/support_trader");
+			cmpPlayer.AddDisabledTemplate("units/" + civ + "/ship_merchant");
+		}
+	}
+
 	const cmpAIManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_AIManager);
 	for (let i = 0; i < settings.PlayerData.length; ++i)
 	{
