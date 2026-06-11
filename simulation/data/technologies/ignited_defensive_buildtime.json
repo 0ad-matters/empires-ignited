@@ -1,0 +1,9 @@
+{
+	"genericName": "Defensive Construction",
+	"description": "Defense towers, walls and palisades take twice as long to build.",
+	"autoResearch": true,
+	"modifications": [
+		{ "value": "Cost/BuildTime", "multiply": 2 }
+	],
+	"affects": ["Tower", "Wall", "Palisade"]
+}

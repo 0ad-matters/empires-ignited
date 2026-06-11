@@ -37,6 +37,8 @@ armed citizenry, and fire-and-energy flavour.
   requires a barracks, stable, market and defense tower (at stock cost
   and time), not auto-researched.
 - **Defense towers can be built twice as close together.**
+- **Defensive structures take twice as long to build** — defense towers,
+  walls and palisades.
 - **Market, temple and defense-tower upgrades auto-research** at game
   start — except **Murder Holes** (which removes a tower's minimum range),
   which you research manually.
